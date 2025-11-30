@@ -15,8 +15,8 @@ import pygame
 class RuleBasedAIAgent:
     """Lightweight agent that chooses flap/no-op actions."""
 
-    def __init__(self, flap_buffer: int = 15) -> None:
-        # flap_buffer adds a small margin so the bird aims slightly above gap center
+    def __init__(self, flap_buffer: int = 25) -> None:
+        # flap_buffer adds a margin so the bird stays a bit below gap center (larger = lower path)
         self.flap_buffer = flap_buffer
 
     def reset(self) -> None:
@@ -40,7 +40,7 @@ class RuleBasedAIAgent:
         # Flap if the bird is below the desired track or is dropping too fast near a pipe.
         if height_delta > self.flap_buffer:
             return True
-        if horizontal_distance < 80 and height_delta > -self.flap_buffer and bird_velocity > 3:
+        if horizontal_distance < 70 and height_delta > 0 and bird_velocity > 4:
             return True
 
         return False

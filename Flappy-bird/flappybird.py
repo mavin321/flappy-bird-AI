@@ -106,7 +106,7 @@ class Bird(pygame.sprite.Sprite):
                     self.clicked=False
 
             if flap_command:
-                self.vel=-7
+                self.vel=-5
 
             self.ai_flap=False
 
